@@ -43,6 +43,37 @@ class ViewControllerScreen: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
+    
+    
+    lazy var emailTextField : UITextField = { // campo de email
+                let emailLogin = UITextField()
+                emailLogin.placeholder = "Login"
+                emailLogin.textColor = .black
+                emailLogin.font = UIFont.systemFont(ofSize: 20)
+                emailLogin.translatesAutoresizingMaskIntoConstraints = false
+                emailLogin.backgroundColor = .gray
+                emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+                emailLogin.borderStyle = .roundedRect // bordas arredondadas
+                emailLogin.keyboardType = .emailAddress // tipo de teclado
+                return emailLogin
+            }()
+        
+        
+        lazy var passwordTextField : UITextField = { // campo de senha
+                let passwordLogin = UITextField()
+                passwordLogin.placeholder = "Senha"
+                passwordLogin.textColor = .black
+                passwordLogin.font = UIFont.systemFont(ofSize: 20)
+                passwordLogin.translatesAutoresizingMaskIntoConstraints = false
+                passwordLogin.backgroundColor = .gray
+                passwordLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+                passwordLogin.borderStyle = .roundedRect // bordas arredondadas
+                passwordLogin.keyboardType = .default // tipo de teclado
+                passwordLogin.isSecureTextEntry = true // texto para senhas protegidas
+                return passwordLogin
+            }()
+    
+    
     override init(frame: CGRect) { //permite que você crie uma view com um retângulo inicial (frame), que define sua posição e tamanho na tela.
         super.init(frame: frame) //O frame define a posição e o tamanho da UIView quando ela é criada.
         
@@ -59,6 +90,8 @@ class ViewControllerScreen: UIView {
         addSubview(loginLogoView)
         addSubview(titleLabel)
         addSubview(subtitleLabel)
+        addSubview(emailTextField)
+        addSubview(passwordTextField)
     }
     
     private func configConstraints () {
@@ -78,6 +111,18 @@ class ViewControllerScreen: UIView {
             
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             subtitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            emailTextField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 30),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
+            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            
         ])
     }
 }
