@@ -47,13 +47,16 @@ class ViewControllerScreen: UIView {
     
     lazy var emailTextField : UITextField = { // campo de email
                 let emailLogin = UITextField()
-                emailLogin.placeholder = "Login"
+                emailLogin.placeholder = " Login"
                 emailLogin.textColor = .black
                 emailLogin.font = UIFont.systemFont(ofSize: 20)
                 emailLogin.translatesAutoresizingMaskIntoConstraints = false
-                emailLogin.backgroundColor = .gray
+                emailLogin.backgroundColor = .systemGray2
                 emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
-                emailLogin.borderStyle = .roundedRect // bordas arredondadas
+                //emailLogin.borderStyle = .roundedRect // bordas arredondadas
+                emailLogin.layer.cornerRadius = 12 // borda arredondada
+                emailLogin.layer.borderWidth = 1.0// largura borda
+                emailLogin.layer.borderColor = UIColor.white.cgColor // cor da borda
                 emailLogin.keyboardType = .emailAddress // tipo de teclado
                 return emailLogin
             }()
@@ -61,13 +64,16 @@ class ViewControllerScreen: UIView {
         
         lazy var passwordTextField : UITextField = { // campo de senha
                 let passwordLogin = UITextField()
-                passwordLogin.placeholder = "Senha"
+                passwordLogin.placeholder = " Senha"
                 passwordLogin.textColor = .black
                 passwordLogin.font = UIFont.systemFont(ofSize: 20)
                 passwordLogin.translatesAutoresizingMaskIntoConstraints = false
-                passwordLogin.backgroundColor = .gray
+                passwordLogin.backgroundColor = .systemGray2
                 passwordLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
-                passwordLogin.borderStyle = .roundedRect // bordas arredondadas
+                //passwordLogin.borderStyle = .roundedRect // bordas arredondadas
+                passwordLogin.layer.cornerRadius = 12
+                passwordLogin.layer.borderWidth = 1.0
+                passwordLogin.layer.borderColor = UIColor.white.cgColor
                 passwordLogin.keyboardType = .default // tipo de teclado
                 passwordLogin.isSecureTextEntry = true // texto para senhas protegidas
                 return passwordLogin
