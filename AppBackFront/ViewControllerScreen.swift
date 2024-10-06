@@ -62,7 +62,7 @@ class ViewControllerScreen: UIView {
             }()
         
         
-        lazy var passwordTextField : UITextField = { // campo de senha
+    lazy var passwordTextField : UITextField = { // campo de senha
                 let passwordLogin = UITextField()
                 passwordLogin.placeholder = " Senha"
                 passwordLogin.textColor = .black
@@ -79,17 +79,50 @@ class ViewControllerScreen: UIView {
                 return passwordLogin
             }()
     
+    lazy var recoverPasswordButton : UIButton = {
+        let bt = UIButton(type: .system) // button do tipo do sistema
+        bt.translatesAutoresizingMaskIntoConstraints = false
+        bt.setTitle("Recuperar senha?", for: .normal)
+        bt.setTitleColor(UIColor(red: 231/235, green: 48/255, blue: 214/255, alpha: 1.0) ,for: .normal) // cor personalizada em RGB
+        bt.addTarget(self, action:#selector(tappetRecoverPasswordButton), for: .touchUpInside)// método chamado e acao
+        return bt
+    }()
+    @objc func tappetRecoverPasswordButton( _ sender: UIButton){ // método invocado pela acao do botao
+        print(#function)
+    }
+    
+    
+    
+    lazy var buttonLoginButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)// tamanho da fonte
+        button.setTitleColor(.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.5) // cor com transparencia
+        button.layer.cornerRadius = 10 // angulo das bordas
+        button.clipsToBounds = true // habilita bordas arredondadas
+        button.addTarget(self, action: #selector(tappetButtonLoginButton), for: .touchUpInside)
+        return button
+    }()
+    @objc func tappetButtonLoginButton( _ sender: UIButton){ // método invocado pela acao do botao
+        print(#function)
+    }
+    
+    
     
     override init(frame: CGRect) { //permite que você crie uma view com um retângulo inicial (frame), que define sua posição e tamanho na tela.
         super.init(frame: frame) //O frame define a posição e o tamanho da UIView quando ela é criada.
         
         addElements() // chama o método com todos os elementos
         configConstraints() // constraints dos elementos
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     private func addElements () { // método para invocar os elementos para a view
         addSubview(subImageView)
@@ -98,6 +131,8 @@ class ViewControllerScreen: UIView {
         addSubview(subtitleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
+        addSubview(recoverPasswordButton)
+        addSubview(buttonLoginButton)
     }
     
     private func configConstraints () {
@@ -127,6 +162,15 @@ class ViewControllerScreen: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            recoverPasswordButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 9),
+            recoverPasswordButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            recoverPasswordButton.heightAnchor.constraint(equalToConstant: 16),
+            
+            buttonLoginButton.topAnchor.constraint(equalTo: recoverPasswordButton.bottomAnchor, constant: 40),
+            buttonLoginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buttonLoginButton.widthAnchor.constraint(equalToConstant: 240),
+            
             
             
         ])
