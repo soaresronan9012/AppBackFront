@@ -46,38 +46,38 @@ class ViewControllerScreen: UIView {
     
     
     lazy var emailTextField : UITextField = { // campo de email
-                let emailLogin = UITextField()
-                emailLogin.placeholder = " Login"
-                emailLogin.textColor = .black
-                emailLogin.font = UIFont.systemFont(ofSize: 20)
-                emailLogin.translatesAutoresizingMaskIntoConstraints = false
-                emailLogin.backgroundColor = .systemGray2
-                emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
-                //emailLogin.borderStyle = .roundedRect // bordas arredondadas
-                emailLogin.layer.cornerRadius = 12 // borda arredondada
-                emailLogin.layer.borderWidth = 1.0// largura borda
-                emailLogin.layer.borderColor = UIColor.white.cgColor // cor da borda
-                emailLogin.keyboardType = .emailAddress // tipo de teclado
-                return emailLogin
-            }()
-        
-        
+        let emailLogin = UITextField()
+        emailLogin.placeholder = " Login"
+        emailLogin.textColor = .black
+        emailLogin.font = UIFont.systemFont(ofSize: 20)
+        emailLogin.translatesAutoresizingMaskIntoConstraints = false
+        emailLogin.backgroundColor = .systemGray2
+        emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+        //emailLogin.borderStyle = .roundedRect // bordas arredondadas
+        emailLogin.layer.cornerRadius = 12 // borda arredondada
+        emailLogin.layer.borderWidth = 1.0// largura borda
+        emailLogin.layer.borderColor = UIColor.white.cgColor // cor da borda
+        emailLogin.keyboardType = .emailAddress // tipo de teclado
+        return emailLogin
+    }()
+    
+    
     lazy var passwordTextField : UITextField = { // campo de senha
-                let passwordLogin = UITextField()
-                passwordLogin.placeholder = " Senha"
-                passwordLogin.textColor = .black
-                passwordLogin.font = UIFont.systemFont(ofSize: 20)
-                passwordLogin.translatesAutoresizingMaskIntoConstraints = false
-                passwordLogin.backgroundColor = .systemGray2
-                passwordLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
-                //passwordLogin.borderStyle = .roundedRect // bordas arredondadas
-                passwordLogin.layer.cornerRadius = 12
-                passwordLogin.layer.borderWidth = 1.0
-                passwordLogin.layer.borderColor = UIColor.white.cgColor
-                passwordLogin.keyboardType = .default // tipo de teclado
-                passwordLogin.isSecureTextEntry = true // texto para senhas protegidas
-                return passwordLogin
-            }()
+        let passwordLogin = UITextField()
+        passwordLogin.placeholder = " Senha"
+        passwordLogin.textColor = .black
+        passwordLogin.font = UIFont.systemFont(ofSize: 20)
+        passwordLogin.translatesAutoresizingMaskIntoConstraints = false
+        passwordLogin.backgroundColor = .systemGray2
+        passwordLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+        //passwordLogin.borderStyle = .roundedRect // bordas arredondadas
+        passwordLogin.layer.cornerRadius = 12
+        passwordLogin.layer.borderWidth = 1.0
+        passwordLogin.layer.borderColor = UIColor.white.cgColor
+        passwordLogin.keyboardType = .default // tipo de teclado
+        passwordLogin.isSecureTextEntry = true // texto para senhas protegidas
+        return passwordLogin
+    }()
     
     lazy var recoverPasswordButton : UIButton = {
         let bt = UIButton(type: .system) // button do tipo do sistema
@@ -109,7 +109,10 @@ class ViewControllerScreen: UIView {
         print(#function)
     }
     
-    
+    lazy var lineView : UIView = {
+        let line = UIView()
+        return line
+    }()
     
     override init(frame: CGRect) { //permite que você crie uma view com um retângulo inicial (frame), que define sua posição e tamanho na tela.
         super.init(frame: frame) //O frame define a posição e o tamanho da UIView quando ela é criada.
