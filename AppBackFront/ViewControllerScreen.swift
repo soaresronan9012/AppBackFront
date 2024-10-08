@@ -109,10 +109,41 @@ class ViewControllerScreen: UIView {
         print(#function)
     }
     
-    lazy var lineView : UIView = {
+    lazy var lineView : UIView = { // line
         let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = .white
         return line
     }()
+    
+    lazy var loginView : UIView = { // view que ficara botao login de contas ja cadastradas
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.systemPurple.cgColor
+        view.layer.borderWidth = 2  // largura da borda
+        return view
+    }()
+    
+    lazy var iconButtonImage : UIImageView = {
+        let icon = UIImageView()
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.image = UIImage(named: "Image" )   // assets da imagem
+        //image.contentMode = .scaleAspectFit  // por hora nao usar
+        return icon
+    }()
+    
+    lazy var labelIconLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "Entrar com a Metamask"  // Define o texto do label
+        lbl.textAlignment = .center  // Centraliza o texto no label
+        lbl.font = UIFont.systemFont(ofSize: 13, weight: .semibold)  // Define a fonte e o tamanho
+        lbl.textColor = .white // Cor do texto
+        return lbl
+    }()
+    
     
     override init(frame: CGRect) { //permite que você crie uma view com um retângulo inicial (frame), que define sua posição e tamanho na tela.
         super.init(frame: frame) //O frame define a posição e o tamanho da UIView quando ela é criada.
@@ -136,6 +167,10 @@ class ViewControllerScreen: UIView {
         addSubview(passwordTextField)
         addSubview(recoverPasswordButton)
         addSubview(buttonLoginButton)
+        addSubview(lineView)
+        addSubview(loginView)
+        addSubview(iconButtonImage)
+        addSubview(labelIconLabel)
     }
     
     private func configConstraints () {
@@ -147,8 +182,8 @@ class ViewControllerScreen: UIView {
             
             loginLogoView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
             loginLogoView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loginLogoView.heightAnchor.constraint(equalToConstant: 65), // altura logo
-            loginLogoView.widthAnchor.constraint(equalToConstant: 65), //largura logo
+            loginLogoView.heightAnchor.constraint(equalToConstant: 85), // altura logo
+            loginLogoView.widthAnchor.constraint(equalToConstant: 85), //largura logo
             
             titleLabel.topAnchor.constraint(equalTo: loginLogoView.bottomAnchor, constant: 15),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -172,7 +207,30 @@ class ViewControllerScreen: UIView {
             
             buttonLoginButton.topAnchor.constraint(equalTo: recoverPasswordButton.bottomAnchor, constant: 40),
             buttonLoginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            buttonLoginButton.widthAnchor.constraint(equalToConstant: 240),
+            buttonLoginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            buttonLoginButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
+            //buttonLoginButton.widthAnchor.constraint(equalToConstant: 240),
+            
+            lineView.topAnchor.constraint(equalTo: buttonLoginButton.bottomAnchor, constant: 70),
+            lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
+            lineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
+            lineView.heightAnchor.constraint(equalToConstant: 0.5), // altura da linha
+            
+            loginView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 48),
+            loginView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            loginView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            loginView.heightAnchor.constraint(equalToConstant: 40),
+            
+            iconButtonImage.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10),
+            iconButtonImage.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 45),
+            iconButtonImage.heightAnchor.constraint(equalToConstant: 20), // altura logo
+            iconButtonImage.widthAnchor.constraint(equalToConstant: 20),
+            
+            labelIconLabel.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 13),
+            labelIconLabel.leadingAnchor.constraint(equalTo: iconButtonImage.trailingAnchor, constant: 30),
+            
+            
+            
             
             
             
