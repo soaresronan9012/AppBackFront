@@ -145,6 +145,7 @@ class ViewControllerScreen: UIView {
     }()
     
     
+    
     override init(frame: CGRect) { //permite que você crie uma view com um retângulo inicial (frame), que define sua posição e tamanho na tela.
         super.init(frame: frame) //O frame define a posição e o tamanho da UIView quando ela é criada.
         
@@ -158,6 +159,7 @@ class ViewControllerScreen: UIView {
     }
     
     
+    
     private func addElements () { // método para invocar os elementos para a view
         addSubview(subImageView)
         addSubview(loginLogoView)
@@ -169,8 +171,8 @@ class ViewControllerScreen: UIView {
         addSubview(buttonLoginButton)
         addSubview(lineView)
         addSubview(loginView)
-        addSubview(iconButtonImage)
-        addSubview(labelIconLabel)
+        loginView.addSubview(iconButtonImage) // porque esta dentro dessa view
+        loginView.addSubview(labelIconLabel)
     }
     
     private func configConstraints () {
@@ -222,12 +224,14 @@ class ViewControllerScreen: UIView {
             loginView.heightAnchor.constraint(equalToConstant: 40),
             
             iconButtonImage.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10),
-            iconButtonImage.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 45),
+            //iconButtonImage.centerYAnchor.constraint(equalTo: iconButtonImage.centerYAnchor),
+            iconButtonImage.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 78),
             iconButtonImage.heightAnchor.constraint(equalToConstant: 20), // altura logo
             iconButtonImage.widthAnchor.constraint(equalToConstant: 20),
             
             labelIconLabel.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 13),
-            labelIconLabel.leadingAnchor.constraint(equalTo: iconButtonImage.trailingAnchor, constant: 30),
+            //labelIconLabel.centerYAnchor.constraint(equalTo: labelIconLabel.centerYAnchor),
+            labelIconLabel.leadingAnchor.constraint(equalTo: iconButtonImage.trailingAnchor, constant: 20),
             
             
             
