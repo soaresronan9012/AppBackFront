@@ -7,7 +7,25 @@
 
 import UIKit
 
+protocol viewControllerScrrenProtocol : AnyObject {  // cria um Protocolo de Delegação para comunicar com o ViewController
+    func tappedLoginButton() // método do protocolo, irá ser chamado na viewcontroller
+    }
+
+
+
 class ViewControllerScreen: UIView {
+    
+    private weak var delegate : viewControllerScrrenProtocol?  // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
+        
+        public func delegate( delegate: viewControllerScrrenProtocol? ){ // o parametro dessa funcao, sera o delegado enviado para a private weak delegate
+            self.delegate = delegate// parametro
+        }
+    
+        public func configTextFieldDelegate ( delegate: UITextFieldDelegate){
+            emailTextField.delegate = delegate
+            passwordTextField.delegate = delegate
+    }
+    
     
     lazy var subImageView: UIImageView = { // imagem de fundo da view
         let image = UIImageView()
@@ -95,11 +113,12 @@ class ViewControllerScreen: UIView {
     
     lazy var buttonLoginButton : UIButton = {
         let button = UIButton(type: .system)
+        button.isEnabled = false
         button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)// tamanho da fonte
         button.setTitleColor(.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.5) // cor com transparencia
+        button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.1) // cor com transparencia
         button.layer.cornerRadius = 10 // angulo das bordas
         button.clipsToBounds = true // habilita bordas arredondadas
         button.addTarget(self, action: #selector(tappetButtonLoginButton), for: .touchUpInside)
@@ -107,7 +126,8 @@ class ViewControllerScreen: UIView {
     }()
     @objc func tappetButtonLoginButton( _ sender: UIButton){ // método invocado pela acao do botao
         print(#function)
-    }
+        delegate?.tappedLoginButton() // ao clicar no botao, o delegado vai chamar o metodo do protocol
+                    }
     
     lazy var lineView : UIView = { // line
         let line = UIView()
