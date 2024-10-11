@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5FFFCF2CB8AEE400A6656F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5FFFCE2CB8AEE400A6656F /* SecondViewController.swift */; };
+		4A5FFFD12CB8AF1900A6656F /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5FFFD02CB8AF1900A6656F /* SecondScreen.swift */; };
 		4A85EB462CAA1F9200C5BE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A85EB452CAA1F9200C5BE00 /* AppDelegate.swift */; };
 		4A85EB482CAA1F9200C5BE00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A85EB472CAA1F9200C5BE00 /* SceneDelegate.swift */; };
 		4A85EB4A2CAA1F9200C5BE00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A85EB492CAA1F9200C5BE00 /* ViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A5FFFCE2CB8AEE400A6656F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		4A5FFFD02CB8AF1900A6656F /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
 		4A85EB422CAA1F9200C5BE00 /* AppBackFront.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppBackFront.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A85EB452CAA1F9200C5BE00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A85EB472CAA1F9200C5BE00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +39,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A5FFFCC2CB8AE7300A6656F /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				4A85EB492CAA1F9200C5BE00 /* ViewController.swift */,
+				4AC2D08D2CACC89A002EB1B4 /* ViewControllerScreen.swift */,
+			);
+			path = RootView;
+			sourceTree = "<group>";
+		};
+		4A5FFFCD2CB8AEB600A6656F /* SecondView */ = {
+			isa = PBXGroup;
+			children = (
+				4A5FFFCE2CB8AEE400A6656F /* SecondViewController.swift */,
+				4A5FFFD02CB8AF1900A6656F /* SecondScreen.swift */,
+			);
+			path = SecondView;
+			sourceTree = "<group>";
+		};
 		4A85EB392CAA1F9200C5BE00 = {
 			isa = PBXGroup;
 			children = (
@@ -54,10 +76,10 @@
 		4A85EB442CAA1F9200C5BE00 /* AppBackFront */ = {
 			isa = PBXGroup;
 			children = (
+				4A5FFFCD2CB8AEB600A6656F /* SecondView */,
+				4A5FFFCC2CB8AE7300A6656F /* RootView */,
 				4A85EB452CAA1F9200C5BE00 /* AppDelegate.swift */,
 				4A85EB472CAA1F9200C5BE00 /* SceneDelegate.swift */,
-				4A85EB492CAA1F9200C5BE00 /* ViewController.swift */,
-				4AC2D08D2CACC89A002EB1B4 /* ViewControllerScreen.swift */,
 				4A85EB4E2CAA1F9300C5BE00 /* Assets.xcassets */,
 				4A85EB532CAA1F9300C5BE00 /* Info.plist */,
 			);
@@ -136,7 +158,9 @@
 				4AC2D08E2CACC89A002EB1B4 /* ViewControllerScreen.swift in Sources */,
 				4A85EB4A2CAA1F9200C5BE00 /* ViewController.swift in Sources */,
 				4A85EB462CAA1F9200C5BE00 /* AppDelegate.swift in Sources */,
+				4A5FFFCF2CB8AEE400A6656F /* SecondViewController.swift in Sources */,
 				4A85EB482CAA1F9200C5BE00 /* SceneDelegate.swift in Sources */,
+				4A5FFFD12CB8AF1900A6656F /* SecondScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

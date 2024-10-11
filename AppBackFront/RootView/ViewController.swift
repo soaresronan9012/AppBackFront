@@ -24,9 +24,13 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
                 
     }
     
-    func tappedLoginButton() { // função do delegate
+    func tappedLoginButton() { // função do delegate, ao clicar no botao
         print ( "estou na ViewController")
-    }
+            let vc : SecondViewController = SecondViewController()  // criou uma instancia da class HOME
+            vc.modalPresentationStyle = .pageSheet //personaliza o tipo da tela, no caso tela inteira
+                //present(vc, animated: true)    // invocou o método PRESENT com a instancia anterior
+            navigationController?.pushViewController(vc, animated: true) // metodo da navigationController
+                }
     
     // metodos padrao delegate textfield
        func textFieldDidBeginEditing( _ textField : UITextField){ // Notifica que o usuário começou a editar o texto no campo (o teclado aparece).
@@ -47,6 +51,8 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
            else{
                print("botao desabilitado")
                Screen?.buttonLoginButton.isEnabled = false
+               Screen?.buttonLoginButton.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.1)
+               // caso limpe os campos digitados novamente
            }
            
            }
