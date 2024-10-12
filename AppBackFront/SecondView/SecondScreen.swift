@@ -28,7 +28,7 @@ class SecondScreen: UIView {
     
     lazy var inscricaoLabel: UILabel = {
         let title = UILabel()
-        title.text = "Se inscreva aqui:"  // Define o texto do label
+        title.text = "Sing up"  // Define o texto do label
         title.textAlignment = .center  // Centraliza o texto no label
         title.font = UIFont.systemFont(ofSize: 22, weight: .bold)  // Define a fonte e o tamanho
         title.textColor = .white // Cor do texto
@@ -38,9 +38,9 @@ class SecondScreen: UIView {
     
     lazy var nomeLabel: UILabel = {
         let title = UILabel()
-        title.text = "Nome:"  // Define o texto do label
+        title.text = "Name:"  // Define o texto do label
         title.textAlignment = .center  // Centraliza o texto no label
-        title.font = UIFont.systemFont(ofSize: 18, weight: .bold)  // Define a fonte e o tamanho
+        title.font = UIFont.systemFont(ofSize: 16, weight: .bold)  // Define a fonte e o tamanho
         title.textColor = .white // Cor do texto
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -65,7 +65,7 @@ class SecondScreen: UIView {
     
     lazy var sobrenomeLabel: UILabel = {
         let title = UILabel()
-        title.text = "Sobrenome:"  // Define o texto do label
+        title.text = "Last name:"  // Define o texto do label
         title.textAlignment = .center  // Centraliza o texto no label
         title.font = UIFont.systemFont(ofSize: 16, weight: .bold)  // Define a fonte e o tamanho
         title.textColor = .white // Cor do texto
@@ -90,6 +90,32 @@ class SecondScreen: UIView {
     }()
     
     
+    lazy var idadeLabel: UILabel = {
+        let title = UILabel()
+        title.text = "Age:"  // Define o texto do label
+        title.textAlignment = .center  // Centraliza o texto no label
+        title.font = UIFont.systemFont(ofSize: 16, weight: .bold)  // Define a fonte e o tamanho
+        title.textColor = .white // Cor do texto
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
+    
+    lazy var idadeTextField : UITextField = { // campo de email
+        let emailLogin = UITextField()
+        //emailLogin.placeholder = " Login"
+        emailLogin.textColor = .black
+        emailLogin.font = UIFont.systemFont(ofSize: 20)
+        emailLogin.translatesAutoresizingMaskIntoConstraints = false
+        emailLogin.backgroundColor = .systemGray2
+        emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+        //emailLogin.borderStyle = .roundedRect // bordas arredondadas
+        emailLogin.layer.cornerRadius = 12 // borda arredondada
+        emailLogin.layer.borderWidth = 1.0// largura borda
+        emailLogin.layer.borderColor = UIColor.white.cgColor // cor da borda
+        emailLogin.keyboardType = .numberPad // tipo de teclado
+        return emailLogin
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,6 +135,8 @@ class SecondScreen: UIView {
         addSubview(nomeTextField)
         addSubview(sobrenomeLabel)
         addSubview(sobrenomeTextField)
+        addSubview(idadeLabel)
+        addSubview(idadeTextField)
     }
     
     private func configConstraints (){
@@ -145,6 +173,15 @@ class SecondScreen: UIView {
             //nomeTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
             sobrenomeTextField.heightAnchor.constraint(equalToConstant: 30),
             sobrenomeTextField.widthAnchor.constraint(equalToConstant: 320),
+            
+            idadeLabel.topAnchor.constraint(equalTo: sobrenomeTextField.bottomAnchor, constant: 20),
+            idadeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
+            idadeTextField.topAnchor.constraint(equalTo: idadeLabel.bottomAnchor, constant: 10),
+            idadeTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            //nomeTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
+            idadeTextField.heightAnchor.constraint(equalToConstant: 30),
+            idadeTextField.widthAnchor.constraint(equalToConstant: 320),
         ])
     }
     

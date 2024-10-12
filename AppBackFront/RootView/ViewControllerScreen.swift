@@ -54,9 +54,9 @@ class ViewControllerScreen: UIView {
     
     lazy var subtitleLabel: UILabel = {
         let title = UILabel()
-        title.text = "O marketplace de NFTs da Backfront Academy"  // Define o texto do label
+        title.text = "The Backfront Academy NFT marketplace"  // Define o texto do label
         title.textAlignment = .center  // Centraliza o texto no label
-        title.font = UIFont.systemFont(ofSize: 13, weight: .semibold)  // Define a fonte e o tamanho
+        title.font = UIFont.systemFont(ofSize: 16, weight: .semibold)  // Define a fonte e o tamanho
         title.textColor = .white // Cor do texto
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
