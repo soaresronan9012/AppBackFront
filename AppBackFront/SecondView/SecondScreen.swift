@@ -7,7 +7,18 @@
 
 import UIKit
 
+protocol SecondScrrenProtocol : AnyObject {  // cria um Protocolo de Delegação para comunicar com o ViewController
+    func tappetCadastroButton() // método do protocolo, irá ser chamado na viewcontroller
+    }
+
+
 class SecondScreen: UIView {
+    
+    private weak var delegate : SecondScrrenProtocol?  // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
+        
+        public func delegate( delegate: SecondScrrenProtocol? ){ // o parametro dessa funcao, sera o delegado enviado para a private weak delegate
+            self.delegate = delegate// parametro
+        }
     
     lazy var backgroundImage : UIImageView = {
         let bg = UIImageView()
@@ -116,6 +127,23 @@ class SecondScreen: UIView {
         return emailLogin
     }()
     
+    lazy var buttonCadastroButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("registered", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)// tamanho da fonte
+        button.setTitleColor(.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.8) // cor com transparencia
+        button.layer.cornerRadius = 10 // angulo das bordas
+        button.clipsToBounds = true // habilita bordas arredondadas
+        button.addTarget(self, action: #selector(tappetButtonCadastroButton), for: .touchUpInside)
+        return button
+    }()
+    @objc func tappetButtonCadastroButton( _ sender: UIButton){ // método invocado pela acao do botao
+        print(#function)
+        delegate?.tappetCadastroButton()
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -137,6 +165,7 @@ class SecondScreen: UIView {
         addSubview(sobrenomeTextField)
         addSubview(idadeLabel)
         addSubview(idadeTextField)
+        addSubview(buttonCadastroButton)
     }
     
     private func configConstraints (){
@@ -182,6 +211,11 @@ class SecondScreen: UIView {
             //nomeTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
             idadeTextField.heightAnchor.constraint(equalToConstant: 30),
             idadeTextField.widthAnchor.constraint(equalToConstant: 320),
+            
+            buttonCadastroButton.topAnchor.constraint(equalTo: idadeTextField.bottomAnchor, constant: 60),
+            buttonCadastroButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buttonCadastroButton.widthAnchor.constraint(equalToConstant: 160),
+            
         ])
     }
     

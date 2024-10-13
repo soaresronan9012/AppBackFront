@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-    
+class SecondViewController: UIViewController, SecondScrrenProtocol {
+   
     var screen : SecondScreen? // cria uma var do tipo da screen alvo
     
     override func loadView() {
@@ -18,19 +18,13 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        screen?.delegate(delegate: self)
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    func tappetCadastroButton(){
+        print("Estou na secondVc")
+    }   
 
 }
