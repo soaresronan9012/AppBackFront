@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFieldDelegate {  // protocolos
+class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFieldDelegate, LabelProtocol {  // protocolos
     
     var Screen : ViewControllerScreen? // cria uma var do tipo view personalizada
 
@@ -21,13 +21,21 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
         super.viewDidLoad()
         Screen?.configTextFieldDelegate(delegate: self)
         Screen?.delegate(delegate: self) // invoca método da ViewScrren e passa si proprio como parametro, para se tornar o delegado
+        Screen?.delegatefunc(delegate: self)
                 
+    }
+    
+    func labelTappedProtocol() {
+        let OptionalVC = OptionalViewController() // instancia a class alvo
+        OptionalVC.modalPresentationStyle = .pageSheet // customizacao do tamanho de tela
+        present(OptionalVC, animated: true ,completion: nil) // invoca o método
+        
     }
     
     func tappedLoginButton() { // função do delegate, ao clicar no botao
         print ( "estou na ViewController")
             let vc : SecondViewController = SecondViewController()  // criou uma instancia da class HOME
-            vc.modalPresentationStyle = .pageSheet //personaliza o tipo da tela, no caso tela inteira
+        vc.modalPresentationStyle = .formSheet //personaliza o tipo da tela, no caso tela inteira
                 //present(vc, animated: true)    // invocou o método PRESENT com a instancia anterior
             navigationController?.pushViewController(vc, animated: true) // metodo da navigationController
                 }

@@ -18,7 +18,7 @@ class SecondViewController: UIViewController, SecondScrrenProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        screen?.delegate(delegate: self)
+        screen?.delegate(delegate: self) // protocolo invocado
 
     }
     

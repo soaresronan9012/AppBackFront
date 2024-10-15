@@ -11,20 +11,31 @@ protocol viewControllerScrrenProtocol : AnyObject {  // cria um Protocolo de Del
     func tappedLoginButton() // método do protocolo, irá ser chamado na viewcontroller
     }
 
+protocol LabelProtocol : AnyObject {  // protocolo Label conta
+    func labelTappedProtocol()
+    // método do protocolo, irá ser chamado na viewcontroller
+    }
 
 
 class ViewControllerScreen: UIView {
     
     private weak var delegate : viewControllerScrrenProtocol?  // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
-        
         public func delegate( delegate: viewControllerScrrenProtocol? ){ // o parametro dessa funcao, sera o delegado enviado para a private weak delegate
             self.delegate = delegate// parametro
         }
     
+    
         public func configTextFieldDelegate ( delegate: UITextFieldDelegate){
             emailTextField.delegate = delegate
             passwordTextField.delegate = delegate
-    }
+        }
+    
+    
+    private weak var delegateL : LabelProtocol? // do tipo protocol
+     // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
+    public func delegatefunc( delegate: LabelProtocol? ){ // o parametro dessa funcao, sera o delegado, usado na viewcontroller alvo
+            self.delegateL = delegate// parametro
+        }
     
     
     lazy var subImageView: UIImageView = { // imagem de fundo da view
@@ -154,6 +165,7 @@ class ViewControllerScreen: UIView {
         return icon
     }()
     
+    
     lazy var labelIconLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -161,17 +173,28 @@ class ViewControllerScreen: UIView {
         lbl.textAlignment = .center  // Centraliza o texto no label
         lbl.font = UIFont.systemFont(ofSize: 13, weight: .semibold)  // Define a fonte e o tamanho
         lbl.textColor = .white // Cor do texto
+        lbl.isUserInteractionEnabled = true // habilita interacao do usuário
         return lbl
     }()
+    private func setupGestureRecognizer() { // Método setupGestureRecognizer: Cria e configura o UITapGestureRecognizer para detectar toques na label.
+        //precisa pois habilitou toque na label
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+        labelIconLabel.addGestureRecognizer(tapGesture)
+            }
+    @objc private func labelTapped() { // acao invocada ao ser clicada
+        print("Label clicada!")
+        delegateL?.labelTappedProtocol() // método do protocolo
+    }
+
     
-    
-    
+
     override init(frame: CGRect) { //permite que você crie uma view com um retângulo inicial (frame), que define sua posição e tamanho na tela.
         super.init(frame: frame) //O frame define a posição e o tamanho da UIView quando ela é criada.
         
         addElements() // chama o método com todos os elementos
         configConstraints() // constraints dos elementos
-
+        setupGestureRecognizer() // precisa ser invocada
+    
     }
     
     required init?(coder: NSCoder) {
