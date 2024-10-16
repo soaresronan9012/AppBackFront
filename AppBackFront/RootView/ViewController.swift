@@ -25,7 +25,7 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
                 
     }
     
-    func labelTappedProtocol() {
+    func labelTappedProtocol() { // do protocol
         let OptionalVC = OptionalViewController() // instancia a class alvo
         OptionalVC.modalPresentationStyle = .pageSheet // customizacao do tamanho de tela
         present(OptionalVC, animated: true ,completion: nil) // invoca o método
