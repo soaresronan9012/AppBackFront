@@ -27,6 +27,15 @@ class OptionalScreenView: UIView {
         return label
     }()
     
+    lazy var titleUILabel: UILabel = {
+        let title = UILabel()
+        title.text = "Here you find all the best in one place"  // Define o texto do label
+        title.textAlignment = .center  // Centraliza o texto no label
+        title.font = UIFont.systemFont(ofSize: 18, weight: .bold)  // Define a fonte e o tamanho
+        title.textColor = .white // Cor do texto
+        title.translatesAutoresizingMaskIntoConstraints = false
+        return title
+    }()
     override init(frame : CGRect){
         super.init(frame: frame)
         addElements() // chama o método com todos os elementos
@@ -42,6 +51,7 @@ class OptionalScreenView: UIView {
     private func addElements(){
         addSubview(backgroundImageView)
         addSubview(labelInfoLabel)
+        addSubview(titleUILabel)
         }
         
     private func configConstraints(){
@@ -53,6 +63,9 @@ class OptionalScreenView: UIView {
                 
                 labelInfoLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
                 labelInfoLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+                
+                titleUILabel.topAnchor.constraint(equalTo: labelInfoLabel.bottomAnchor, constant: 50),
+                titleUILabel.centerXAnchor.constraint(equalTo: centerXAnchor),
                         
             ])}
     
