@@ -36,6 +36,14 @@ class OptionalScreenView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
+    
+    lazy var alertImage : UIImageView = {
+        let alert = UIImageView()
+        alert.translatesAutoresizingMaskIntoConstraints = false
+        alert.image = UIImage(named: "login-2-svgrepo-com" )
+        return alert
+    }()
+    
     override init(frame : CGRect){
         super.init(frame: frame)
         addElements() // chama o método com todos os elementos
@@ -52,6 +60,7 @@ class OptionalScreenView: UIView {
         addSubview(backgroundImageView)
         addSubview(labelInfoLabel)
         addSubview(titleUILabel)
+        addSubview(alertImage)
         }
         
     private func configConstraints(){
@@ -66,6 +75,11 @@ class OptionalScreenView: UIView {
                 
                 titleUILabel.topAnchor.constraint(equalTo: labelInfoLabel.bottomAnchor, constant: 50),
                 titleUILabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+                
+                alertImage.topAnchor.constraint(equalTo: titleUILabel.bottomAnchor, constant: 90),
+                alertImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+                alertImage.widthAnchor.constraint(equalToConstant: 120),
+                alertImage.heightAnchor.constraint(equalToConstant: 120),
                         
             ])}
     
