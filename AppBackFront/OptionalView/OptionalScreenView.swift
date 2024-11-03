@@ -52,11 +52,22 @@ class OptionalScreenView: UIView {
         line.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         line.textColor = .white
         line.translatesAutoresizingMaskIntoConstraints = false
+        line.isUserInteractionEnabled = true
         return line
     }()
+    private func setupGestureRecognizerLineUILabel() {
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(lineUILabelTapped))
+        lineUILabel.addGestureRecognizer(tapGesture)
+                    }
+            @objc private func lineUILabelTapped() { // acao invocada ao ser clicada
+                print("text clicado!")
+                
+            }
+    
     
     override init(frame : CGRect){
         super.init(frame: frame)
+        setupGestureRecognizerLineUILabel()
         addElements() // chama o método com todos os elementos
         configConstraints() // constraints dos elementos
     }
