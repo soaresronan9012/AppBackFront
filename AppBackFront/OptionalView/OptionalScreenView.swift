@@ -44,6 +44,17 @@ class OptionalScreenView: UIView {
         return alert
     }()
     
+    lazy var lineUILabel : UILabel = {
+        let line = UILabel()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.text = "Register now"
+        line.textAlignment = .center
+        line.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        line.textColor = .white
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
+    
     override init(frame : CGRect){
         super.init(frame: frame)
         addElements() // chama o método com todos os elementos
@@ -61,6 +72,7 @@ class OptionalScreenView: UIView {
         addSubview(labelInfoLabel)
         addSubview(titleUILabel)
         addSubview(alertImage)
+        addSubview(lineUILabel)
         }
         
     private func configConstraints(){
@@ -80,6 +92,9 @@ class OptionalScreenView: UIView {
                 alertImage.centerXAnchor.constraint(equalTo: centerXAnchor),
                 alertImage.widthAnchor.constraint(equalToConstant: 120),
                 alertImage.heightAnchor.constraint(equalToConstant: 120),
+                
+                lineUILabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -75 ),
+                lineUILabel.centerXAnchor.constraint(equalTo: centerXAnchor),
                         
             ])}
     
