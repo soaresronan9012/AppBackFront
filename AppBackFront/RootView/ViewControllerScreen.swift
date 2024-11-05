@@ -16,6 +16,10 @@ protocol LabelProtocol : AnyObject {  // protocolo Label conta
     // método do protocolo, irá ser chamado na viewcontroller
     }
 
+protocol recoverPasswordProtocol : AnyObject {
+    func recoverPasswordTappedProtocol()
+}
+
 
 class ViewControllerScreen: UIView {
     
@@ -36,6 +40,13 @@ class ViewControllerScreen: UIView {
     public func delegatefunc( delegate: LabelProtocol? ){ // o parametro dessa funcao, sera o delegado, usado na viewcontroller alvo
             self.delegateL = delegate// parametro
         }
+    
+    
+    private weak var delegateR : recoverPasswordProtocol?
+    
+    public func delegatefuncR( delegate: recoverPasswordProtocol? ){
+        self.delegateR = delegate
+    }
     
     
     lazy var subImageView: UIImageView = { // imagem de fundo da view
@@ -117,7 +128,7 @@ class ViewControllerScreen: UIView {
         return bt
     }()
     @objc func tappetRecoverPasswordButton( _ sender: UIButton){ // método invocado pela acao do botao
-        print(#function)
+        delegateR?.recoverPasswordTappedProtocol() // o delegado ira chamar esse metodo
     }
     
     

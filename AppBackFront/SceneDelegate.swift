@@ -9,11 +9,12 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
+    var window: UIWindow? // em storyboard trocaria aqui automaticamente
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         let window = UIWindow ( windowScene: windowScene) // criou a window
         let vc : ViewController = ViewController() // instanciou a vc root
         let navVC = UINavigationController(rootViewController: vc) // cria uma nav onde vc é a root

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFieldDelegate, LabelProtocol {  // protocolos
+class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFieldDelegate, LabelProtocol, recoverPasswordProtocol {  // protocolos
     
     var Screen : ViewControllerScreen? // cria uma var do tipo view personalizada
 
@@ -22,6 +22,7 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
         Screen?.configTextFieldDelegate(delegate: self)
         Screen?.delegate(delegate: self) // invoca método da ViewScrren e passa si proprio como parametro, para se tornar o delegado
         Screen?.delegatefunc(delegate: self)
+        Screen?.delegatefuncR(delegate: self)
                 
     }
     
@@ -70,5 +71,9 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
            textField.resignFirstResponder() // habilita sair do teclado apertando |return| do mesmo
            return false
        }
+    
+       func recoverPasswordTappedProtocol() {
+        print("estou na viewcontroller")
+    }
 }
 
