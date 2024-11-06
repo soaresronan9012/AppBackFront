@@ -7,13 +7,14 @@
 
 import UIKit
 
-class OptionalViewController: UIViewController {
+class OptionalViewController: UIViewController, lineProtocol {
     
     var screen: OptionalScreenView?
     
     override func loadView() {
         screen = OptionalScreenView()
         view = screen
+        screen?.lineFuncDelegate(delegate: self )
     }
 
     override func viewDidLoad() {
@@ -22,7 +23,13 @@ class OptionalViewController: UIViewController {
         
     }
     
-
+    func drawLine() {
+        print("linefuncDelegate")
+        dismiss(animated: true) { // primeiro sai da Present
+            self.navigationController?.popToRootViewController(animated: true) // volta para root
+        }
+        // retorna para uinavigationController, vindo de um Present
+    }
     
 
 }

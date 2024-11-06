@@ -25,6 +25,7 @@ class SecondViewController: UIViewController, SecondScrrenProtocol {
 
     func tappetCadastroButton(){
         print("Estou na secondVc")
-    }   
+        
+    }
 
 }

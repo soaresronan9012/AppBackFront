@@ -7,7 +7,18 @@
 
 import UIKit
 
+protocol lineProtocol: AnyObject {
+    func drawLine()
+}
+
+
 class OptionalScreenView: UIView {
+    
+    private weak var linedelegate: lineProtocol?
+    
+    public func lineFuncDelegate( delegate: lineProtocol) {
+        self.linedelegate = delegate
+    }
     
     lazy var backgroundImageView: UIImageView = { // imagem de fundo da view
         let image = UIImageView()
@@ -52,7 +63,7 @@ class OptionalScreenView: UIView {
         line.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         line.textColor = .white
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.isUserInteractionEnabled = true
+        line.isUserInteractionEnabled = true // habilita interacao de click / touch
         return line
     }()
     private func setupGestureRecognizerLineUILabel() {
@@ -61,6 +72,7 @@ class OptionalScreenView: UIView {
                     }
             @objc private func lineUILabelTapped() { // acao invocada ao ser clicada
                 print("text clicado!")
+                linedelegate?.drawLine()
                 
             }
     
