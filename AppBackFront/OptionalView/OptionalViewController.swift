@@ -24,9 +24,8 @@ class OptionalViewController: UIViewController, lineProtocol {
     }
     
     func drawLine() {
-        print("linefuncDelegate")
         dismiss(animated: true) { // primeiro sai da Present
-            self.navigationController?.popToRootViewController(animated: true) // volta para root
+        self.navigationController?.popToRootViewController(animated: true) // volta para root
         }
         // retorna para uinavigationController, vindo de um Present
     }

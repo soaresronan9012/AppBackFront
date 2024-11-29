@@ -20,6 +20,7 @@ class OptionalScreenView: UIView {
         self.linedelegate = delegate
     }
     
+    
     lazy var backgroundImageView: UIImageView = { // imagem de fundo da view
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +80,7 @@ class OptionalScreenView: UIView {
     
     override init(frame : CGRect){
         super.init(frame: frame)
-        setupGestureRecognizerLineUILabel()
+        setupGestureRecognizerLineUILabel() // habilita toque e gestos
         addElements() // chama o método com todos os elementos
         configConstraints() // constraints dos elementos
     }

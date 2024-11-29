@@ -108,6 +108,43 @@ class ViewControllerScreen: UIView {
         return passwordLogin
     }()
     
+    public func configDelegateTextField(delegate: UITextFieldDelegate){  // func assinatura do protocol
+        emailTextField.delegate = delegate   // elementos a serem validados dentro desse protocol
+        passwordTextField.delegate = delegate
+       }
+    
+    
+    // metodo com a validacao dos campos alvos, e tomadas de ações
+        private func validaTextField (){
+            let email: String = emailTextField.text ?? " "   //pode receber ou nao valores, possui valor default
+            let password: String = passwordTextField.text ?? " "
+                      
+           if !email.isEmpty && !password.isEmpty {   // se estiverem preenchidos faça
+               buttonLoginButton.isEnabled = true
+               buttonLoginButton.backgroundColor = .systemPurple
+               buttonLoginButton.layer.borderColor = UIColor.black.cgColor}
+            
+            else {
+                buttonLoginButton.isEnabled = false
+                buttonLoginButton.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.1)
+                buttonLoginButton.layer.borderColor = UIColor.systemGray.cgColor
+                   // gerador de advertencia visual, caso algum campo fique vazio
+                   if email.isEmpty {
+                       emailTextField.layer.borderColor = UIColor.red.cgColor
+                       emailTextField.layer.borderWidth = 4
+                       }
+                   if password.isEmpty{
+                       passwordTextField.layer.borderColor = UIColor.red.cgColor
+                       passwordTextField.layer.borderWidth = 4
+                       }
+               }
+       }
+       
+       func callValidaTextField(){ // metodo public invoca método private
+           validaTextField()
+       }
+    
+    
     lazy var recoverPasswordButton : UIButton = {
         let bt = UIButton(type: .system) // button do tipo do sistema
         bt.translatesAutoresizingMaskIntoConstraints = false
@@ -194,6 +231,7 @@ class ViewControllerScreen: UIView {
         addElements() // chama o método com todos os elementos
         configConstraints() // constraints dos elementos
         setupGestureRecognizer() // precisa ser invocada
+        setupDismissKeyboardGesture()
     
     }
     
@@ -201,6 +239,16 @@ class ViewControllerScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // funcao que baixa o teclado ao tocar na tela
+        private func setupDismissKeyboardGesture() {
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+                tapGesture.cancelsTouchesInView = false // Permite que outros gestos ainda sejam processados
+            self.addGestureRecognizer(tapGesture)
+            }
+        @objc private func dismissKeyboard() {
+            self.endEditing(true) // Fecha o teclado
+           }
     
     
     private func addElements () { // método para invocar os elementos para a view
