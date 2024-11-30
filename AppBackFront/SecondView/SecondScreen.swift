@@ -20,6 +20,23 @@ class SecondScreen: UIView {
             self.delegate = delegate// parametro
         }
     
+    public func configDelegateTextField(delegate: UITextFieldDelegate){  // func assinatura do protocol
+        nomeTextField.delegate = delegate   // elementos a serem validados dentro desse protocol
+        sobrenomeTextField.delegate = delegate
+        idadeTextField.delegate = delegate
+       }
+    
+    
+    // funcao que baixa o teclado ao tocar na tela
+        private func setupDismissKeyboardGesture() {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            tapGesture.cancelsTouchesInView = false // Permite que outros gestos ainda sejam processados
+            self.addGestureRecognizer(tapGesture)
+            }
+        @objc private func dismissKeyboard() {
+            self.endEditing(true) // Fecha o teclado
+           }
+    
     lazy var backgroundImage : UIImageView = {
         let bg = UIImageView()
         bg.translatesAutoresizingMaskIntoConstraints = false
@@ -149,6 +166,7 @@ class SecondScreen: UIView {
         super.init(frame: frame)
         addElements()
         configConstraints()
+        setupDismissKeyboardGesture()
     }
     
     required init?(coder: NSCoder) {
