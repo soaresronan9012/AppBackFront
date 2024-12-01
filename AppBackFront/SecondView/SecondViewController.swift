@@ -26,7 +26,10 @@ class SecondViewController: UIViewController, SecondScrrenProtocol, UITextFieldD
 
     func tappetCadastroButton(){
         print("Estou na secondVc")
-    }
+        let RegisterVC = RegisterVC() // instancia a class alvo
+        RegisterVC.modalPresentationStyle = .pageSheet // customizacao do tamanho de tela
+        present(RegisterVC, animated: true ,completion: nil) // invoca o método
+            }
             
             // metodos textField Delegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
