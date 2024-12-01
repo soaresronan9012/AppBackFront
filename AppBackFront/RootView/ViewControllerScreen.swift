@@ -93,7 +93,7 @@ class ViewControllerScreen: UIView {
     
     lazy var passwordTextField : UITextField = { // campo de senha
         let passwordLogin = UITextField()
-        passwordLogin.placeholder = " Senha"
+        passwordLogin.placeholder = " Password"
         passwordLogin.textColor = .black
         passwordLogin.font = UIFont.systemFont(ofSize: 20)
         passwordLogin.translatesAutoresizingMaskIntoConstraints = false
