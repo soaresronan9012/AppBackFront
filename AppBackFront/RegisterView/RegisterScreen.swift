@@ -25,6 +25,15 @@ class RegisterScreen: UIView {
         return image
     }()
     
+    lazy var HeadLabel : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Please, login with your credentials!"
+        label.textColor = .white
+        label.numberOfLines = 3 // Limita a label a um máximo de 3 linhas
+        label.textAlignment = .center // Alinha o texto no centro
+        return label
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemGray5
@@ -40,6 +49,7 @@ class RegisterScreen: UIView {
     func addelement() {
         addSubview(subImageView)
         addSubview(ImageHeadView)
+        addSubview(HeadLabel)
     }
     
     func setupConstraints() {
@@ -56,6 +66,8 @@ class RegisterScreen: UIView {
             ImageHeadView.widthAnchor.constraint(equalToConstant: 60),
             ImageHeadView.heightAnchor.constraint(equalToConstant: 60),
             
+            HeadLabel.topAnchor.constraint(equalTo: ImageHeadView.bottomAnchor, constant: 40),
+            HeadLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             ])
     }
     
