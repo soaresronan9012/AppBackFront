@@ -17,6 +17,13 @@ class RegisterScreen: UIView {
         return image
     }()
     
+    lazy var ImageHeadView: UIImageView = { // imagem de fundo da view
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "Vector (1)" )   // assets da imagem
+        //image.contentMode = .scaleAspectFit  // por hora nao usar
+        return image
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +39,7 @@ class RegisterScreen: UIView {
     
     func addelement() {
         addSubview(subImageView)
+        addSubview(ImageHeadView)
     }
     
     func setupConstraints() {
@@ -41,6 +49,12 @@ class RegisterScreen: UIView {
             subImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             subImageView.topAnchor.constraint(equalTo: topAnchor),
             subImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            ImageHeadView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            //ImageHeadView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            ImageHeadView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            ImageHeadView.widthAnchor.constraint(equalToConstant: 60),
+            ImageHeadView.heightAnchor.constraint(equalToConstant: 60),
             
             ])
     }
