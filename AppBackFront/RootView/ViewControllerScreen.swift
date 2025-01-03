@@ -9,6 +9,7 @@ import UIKit
 
 protocol viewControllerScrrenProtocol : AnyObject {  // cria um Protocolo de Delegação para comunicar com o ViewController
     func tappedLoginButton() // método do protocolo, irá ser chamado na viewcontroller
+    func tappedButtonRecover()
     }
 
 protocol LabelProtocol : AnyObject {  // protocolo Label conta
@@ -155,6 +156,7 @@ class ViewControllerScreen: UIView {
     }()
     @objc func tappetRecoverPasswordButton( _ sender: UIButton){ // método invocado pela acao do botao
         print ("recuperar senha")
+        delegate?.tappedButtonRecover()
     }
     
     

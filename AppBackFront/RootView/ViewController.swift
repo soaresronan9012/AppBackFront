@@ -40,6 +40,12 @@ class ViewController: UIViewController, viewControllerScrrenProtocol, UITextFiel
             navigationController?.pushViewController(vc, animated: true) // metodo da navigationController
                 }
     
+    func tappedButtonRecover() {
+        let recover = RecoverVC()
+        recover.modalPresentationStyle = .formSheet
+        present(recover, animated: true)
+    }
+    
     
     
     // metodos padrao delegate textfield

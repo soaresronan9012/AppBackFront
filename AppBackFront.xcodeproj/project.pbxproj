@@ -18,6 +18,8 @@
 		4AD466342CBDF45D007C9A98 /* OptionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD466332CBDF45D007C9A98 /* OptionalViewController.swift */; };
 		4ADE18BA2CFC002800E4F910 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE18B92CFC002800E4F910 /* RegisterScreen.swift */; };
 		4ADE18BC2CFC004500E4F910 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE18BB2CFC004500E4F910 /* RegisterVC.swift */; };
+		4AEBFEB42D27726100355F79 /* RecoverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBFEB32D27726100355F79 /* RecoverScreen.swift */; };
+		4AEBFEB62D27727700355F79 /* RecoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEBFEB52D27727700355F79 /* RecoverVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4AD466332CBDF45D007C9A98 /* OptionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalViewController.swift; sourceTree = "<group>"; };
 		4ADE18B92CFC002800E4F910 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		4ADE18BB2CFC004500E4F910 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		4AEBFEB32D27726100355F79 /* RecoverScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverScreen.swift; sourceTree = "<group>"; };
+		4AEBFEB52D27727700355F79 /* RecoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 		4A85EB442CAA1F9200C5BE00 /* AppBackFront */ = {
 			isa = PBXGroup;
 			children = (
+				4AEBFEB22D27723C00355F79 /* Recover */,
 				4ADE18B82CFBFFFB00E4F910 /* RegisterView */,
 				4AD466302CBDF3EC007C9A98 /* OptionalView */,
 				4A5FFFCD2CB8AEB600A6656F /* SecondView */,
@@ -112,6 +117,15 @@
 				4ADE18BB2CFC004500E4F910 /* RegisterVC.swift */,
 			);
 			path = RegisterView;
+			sourceTree = "<group>";
+		};
+		4AEBFEB22D27723C00355F79 /* Recover */ = {
+			isa = PBXGroup;
+			children = (
+				4AEBFEB32D27726100355F79 /* RecoverScreen.swift */,
+				4AEBFEB52D27727700355F79 /* RecoverVC.swift */,
+			);
+			path = Recover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,7 +206,9 @@
 				4A5FFFCF2CB8AEE400A6656F /* SecondViewController.swift in Sources */,
 				4A85EB482CAA1F9200C5BE00 /* SceneDelegate.swift in Sources */,
 				4A5FFFD12CB8AF1900A6656F /* SecondScreen.swift in Sources */,
+				4AEBFEB62D27727700355F79 /* RecoverVC.swift in Sources */,
 				4ADE18BC2CFC004500E4F910 /* RegisterVC.swift in Sources */,
+				4AEBFEB42D27726100355F79 /* RecoverScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
