@@ -64,7 +64,7 @@ class RegisterScreen: UIView {
     
     lazy var passwordLabelRegister: UILabel = {
         let title = UILabel()
-        title.text = "password:"  // Define o texto do label
+        title.text = "Password:"  // Define o texto do label
         title.textAlignment = .center  // Centraliza o texto no label
         title.font = UIFont.systemFont(ofSize: 16, weight: .bold)  // Define a fonte e o tamanho
         title.textColor = .white // Cor do texto
@@ -133,23 +133,26 @@ class RegisterScreen: UIView {
             
             nomeLabelRegister.topAnchor.constraint(equalTo: HeadLabel.bottomAnchor, constant: 60),
             nomeLabelRegister.leadingAnchor.constraint(equalTo: leadingAnchor, constant:  30),
-            nomeLabelRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nomeLabelRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            //nomeLabelRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
+            //nomeLabelRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             
-            nomeTextFieldRegister.topAnchor.constraint(equalTo: nomeLabelRegister.bottomAnchor, constant: 20),
+            nomeTextFieldRegister.topAnchor.constraint(equalTo: nomeLabelRegister.bottomAnchor, constant: 10),
             nomeTextFieldRegister.leadingAnchor.constraint(equalTo: nomeLabelRegister.leadingAnchor),
-            nomeTextFieldRegister.trailingAnchor.constraint(equalTo: nomeLabelRegister.trailingAnchor),
-            nomeTextFieldRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
+            nomeTextFieldRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            nomeTextFieldRegister.heightAnchor.constraint(equalToConstant: 30),
+            //nomeTextFieldRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             passwordLabelRegister.topAnchor.constraint(equalTo: nomeTextFieldRegister.bottomAnchor, constant: 30),
             passwordLabelRegister.leadingAnchor.constraint(equalTo: leadingAnchor, constant:  30),
-            passwordLabelRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
-            passwordLabelRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            //passwordLabelRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
+            //passwordLabelRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             
-            passwordTextFieldRegister.topAnchor.constraint(equalTo: passwordLabelRegister.bottomAnchor, constant: 20),
-            passwordTextFieldRegister.leadingAnchor.constraint(equalTo: passwordLabelRegister.leadingAnchor),
-            passwordTextFieldRegister.trailingAnchor.constraint(equalTo: passwordLabelRegister.trailingAnchor),
-            passwordTextFieldRegister.centerXAnchor.constraint(equalTo: centerXAnchor),            ])
+            passwordTextFieldRegister.topAnchor.constraint(equalTo: passwordLabelRegister.bottomAnchor, constant: 10),
+            passwordTextFieldRegister.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            passwordTextFieldRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            passwordTextFieldRegister.heightAnchor.constraint(equalToConstant: 30),
+            //passwordTextFieldRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
     }
     
 }
