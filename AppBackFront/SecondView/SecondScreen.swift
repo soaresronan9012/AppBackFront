@@ -76,7 +76,7 @@ class SecondScreen: UIView {
     
     lazy var nomeTextField : UITextField = { // campo de email
         let emailLogin = UITextField()
-        emailLogin.placeholder = " Login"
+        //emailLogin.placeholder = " Login"
         emailLogin.textColor = .black
         emailLogin.font = UIFont.systemFont(ofSize: 16)
         emailLogin.translatesAutoresizingMaskIntoConstraints = false

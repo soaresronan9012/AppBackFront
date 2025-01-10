@@ -38,7 +38,7 @@ class RegisterScreen: UIView {
     
     lazy var nomeLabelRegister: UILabel = {
         let title = UILabel()
-        title.text = "Name:"  // Define o texto do label
+        title.text = "Email:"  // Define o texto do label
         title.textAlignment = .center  // Centraliza o texto no label
         title.font = UIFont.systemFont(ofSize: 16, weight: .bold)  // Define a fonte e o tamanho
         title.textColor = .white // Cor do texto
@@ -48,7 +48,7 @@ class RegisterScreen: UIView {
     
     lazy var nomeTextFieldRegister : UITextField = { // campo de email
         let emailLogin = UITextField()
-        emailLogin.placeholder = " email"
+        //emailLogin.placeholder = " email"
         emailLogin.textColor = .black
         emailLogin.font = UIFont.systemFont(ofSize: 16)
         emailLogin.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +74,7 @@ class RegisterScreen: UIView {
     
     lazy var passwordTextFieldRegister : UITextField = { // campo de email
         let emailLogin = UITextField()
-        emailLogin.placeholder = " password"
+        //emailLogin.placeholder = " password"
         emailLogin.textColor = .black
         emailLogin.font = UIFont.systemFont(ofSize: 16)
         emailLogin.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +88,24 @@ class RegisterScreen: UIView {
         emailLogin.isSecureTextEntry = true
         return emailLogin
     }()
+    
+    
+    lazy var buttonRecoverButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("send ", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)// tamanho da fonte
+        button.setTitleColor(.white, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.8) // cor com transparencia
+        button.layer.cornerRadius = 10 // angulo das bordas
+        button.clipsToBounds = true // habilita bordas arredondadas
+        button.addTarget(self, action: #selector(tappetButtonCadastroButton), for: .touchUpInside)
+        return button
+    }()
+    @objc func tappetButtonCadastroButton( _ sender: UIButton){ // método invocado pela acao do botao
+        print("clicou")
+        
+    }
     
     
     
@@ -112,6 +130,7 @@ class RegisterScreen: UIView {
         addSubview(nomeTextFieldRegister)
         addSubview(passwordLabelRegister)
         addSubview(passwordTextFieldRegister)
+        addSubview(buttonRecoverButton)
     }
     
     func setupConstraints() {
@@ -152,6 +171,10 @@ class RegisterScreen: UIView {
             passwordTextFieldRegister.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             passwordTextFieldRegister.heightAnchor.constraint(equalToConstant: 30),
             //passwordTextFieldRegister.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            buttonRecoverButton.topAnchor.constraint(equalTo: passwordTextFieldRegister.bottomAnchor, constant: 80),
+            buttonRecoverButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buttonRecoverButton.widthAnchor.constraint(equalToConstant: 160),
         ])
     }
     
