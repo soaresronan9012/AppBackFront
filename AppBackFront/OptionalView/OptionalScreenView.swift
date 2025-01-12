@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol alertImage: AnyObject {
+    func showAlertImage()
+}
+
 protocol lineProtocol: AnyObject {
     func drawLine()
 }
@@ -15,12 +19,15 @@ protocol lineProtocol: AnyObject {
 class OptionalScreenView: UIView {
     
     private weak var linedelegate: lineProtocol?
+    private weak var alertdelegate: alertImage?
     
     public func lineFuncDelegate( delegate: lineProtocol) {
         self.linedelegate = delegate
     }
     
-    
+    public func alertDelegateFunc( delegate: alertImage) {
+        self.alertdelegate = delegate
+    }
     lazy var backgroundImageView: UIImageView = { // imagem de fundo da view
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +60,17 @@ class OptionalScreenView: UIView {
         let alert = UIImageView()
         alert.translatesAutoresizingMaskIntoConstraints = false
         alert.image = UIImage(named: "login-2-svgrepo-com" )
+        alert.isUserInteractionEnabled = true
         return alert
     }()
+    private func setupGestureRecognizerAlertImage() {  // padrao do sistema
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(alertTapped))
+        alertImage.addGestureRecognizer(tapGesture) // elemento chama
+                    }
+            @objc private func alertTapped() { // acao invocada ao ser clicada
+                print("imagem apple clicada!")
+                alertdelegate?.showAlertImage()
+                 }
     
     lazy var lineUILabel : UILabel = {
         let line = UILabel()
@@ -83,6 +99,7 @@ class OptionalScreenView: UIView {
         setupGestureRecognizerLineUILabel() // habilita toque e gestos
         addElements() // chama o método com todos os elementos
         configConstraints() // constraints dos elementos
+        setupGestureRecognizerAlertImage()
     }
     
     required init?(coder: NSCoder) {

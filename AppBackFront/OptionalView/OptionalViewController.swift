@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OptionalViewController: UIViewController, lineProtocol {
+class OptionalViewController: UIViewController, lineProtocol, alertImage {
     
     var screen: OptionalScreenView?
     
@@ -15,6 +15,7 @@ class OptionalViewController: UIViewController, lineProtocol {
         screen = OptionalScreenView()
         view = screen
         screen?.lineFuncDelegate(delegate: self )
+        screen?.alertDelegateFunc(delegate: self)
     }
 
     override func viewDidLoad() {
@@ -28,6 +29,10 @@ class OptionalViewController: UIViewController, lineProtocol {
         self.navigationController?.popToRootViewController(animated: true) // volta para root
         }
         // retorna para uinavigationController, vindo de um Present
+    }
+    
+    func showAlertImage() {
+        dismiss( animated: true, completion: nil)
     }
     
 
