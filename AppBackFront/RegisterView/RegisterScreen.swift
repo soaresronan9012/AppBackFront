@@ -76,10 +76,11 @@ class RegisterScreen: UIView {
         let emailLogin = UITextField()
         //emailLogin.placeholder = " password"
         emailLogin.textColor = .black
+        emailLogin.keyboardType = .default
         emailLogin.font = UIFont.systemFont(ofSize: 16)
         emailLogin.translatesAutoresizingMaskIntoConstraints = false
         emailLogin.backgroundColor = .systemGray2
-        emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+        //emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
         //emailLogin.borderStyle = .roundedRect // bordas arredondadas
         emailLogin.layer.cornerRadius = 12 // borda arredondada
         emailLogin.layer.borderWidth = 1.0// largura borda
@@ -100,6 +101,7 @@ class RegisterScreen: UIView {
         button.layer.cornerRadius = 10 // angulo das bordas
         button.clipsToBounds = true // habilita bordas arredondadas
         button.addTarget(self, action: #selector(tappetButtonCadastroButton), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     @objc func tappetButtonCadastroButton( _ sender: UIButton){ // método invocado pela acao do botao
@@ -108,7 +110,44 @@ class RegisterScreen: UIView {
     }
     
     
+    public func configDelegateTextFieldDelegate(delegate: UITextFieldDelegate){
+        nomeTextFieldRegister.delegate = delegate
+        passwordTextFieldRegister.delegate = delegate
+        // elementos a serem validados
+    }
     
+    public func validateTextFields(){  // funcao de validacoes
+        let passwordValidation : String = nomeTextFieldRegister.text ?? ""
+        let textFieldValidation : String = passwordTextFieldRegister.text ??  ""
+        
+        if !passwordValidation.isEmpty && !textFieldValidation.isEmpty {
+            buttonRecoverButton.isEnabled = true
+            buttonRecoverButton.setTitleColor(.white, for: .normal)
+            nomeTextFieldRegister.layer.borderWidth = 0
+            passwordTextFieldRegister.layer.borderWidth = 0 }
+        
+        else{
+            buttonRecoverButton.isEnabled = false
+            buttonRecoverButton.setTitleColor(.systemGray, for: .normal)
+            
+            nomeTextFieldRegister.layer.borderWidth = 2
+            nomeTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+            
+            passwordTextFieldRegister.layer.borderWidth = 2
+            passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+            
+            if passwordValidation.isEmpty {
+                passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+                passwordTextFieldRegister.layer.borderWidth = 2
+                }
+            if textFieldValidation.isEmpty{
+                nomeTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+                nomeTextFieldRegister.layer.borderWidth = 2
+                }
+        }
+        }
+    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
