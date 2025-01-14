@@ -120,13 +120,13 @@ class RegisterScreen: UIView {
         let passwordValidation : String = nomeTextFieldRegister.text ?? ""
         let textFieldValidation : String = passwordTextFieldRegister.text ??  ""
         
-        if !passwordValidation.isEmpty && !textFieldValidation.isEmpty {
+        if !passwordValidation.isEmpty && !textFieldValidation.isEmpty { // se campos preenchidos
             buttonRecoverButton.isEnabled = true
             buttonRecoverButton.setTitleColor(.white, for: .normal)
             nomeTextFieldRegister.layer.borderWidth = 0
             passwordTextFieldRegister.layer.borderWidth = 0 }
         
-        else{
+        else{ // se campos vazios
             buttonRecoverButton.isEnabled = false
             buttonRecoverButton.setTitleColor(.systemGray, for: .normal)
             
@@ -136,17 +136,40 @@ class RegisterScreen: UIView {
             passwordTextFieldRegister.layer.borderWidth = 2
             passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
             
-            if passwordValidation.isEmpty {
-                passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
-                passwordTextFieldRegister.layer.borderWidth = 2
-                }
-            if textFieldValidation.isEmpty{
-                nomeTextFieldRegister.layer.borderColor = UIColor.red.cgColor
-                nomeTextFieldRegister.layer.borderWidth = 2
-                }
+//            if passwordValidation.isEmpty {
+//                passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+//                passwordTextFieldRegister.layer.borderWidth = 2
+//                }
+//            if textFieldValidation.isEmpty{
+//                nomeTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+//                nomeTextFieldRegister.layer.borderWidth = 2
+//                }
         }
         }
     
+    private func setupDismissKeyboardGesture() { // ao clicar na tela, o teclado desce
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+            tapGesture.cancelsTouchesInView = false // Permite que outros gestos ainda sejam processados
+        self.addGestureRecognizer(tapGesture)
+        }
+    @objc private func dismissKeyboard() {
+        self.endEditing(true) // Fecha o teclado
+        
+        if passwordTextFieldRegister.text?.isEmpty == true {
+            passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+            passwordTextFieldRegister.layer.borderWidth = 2
+            }
+        else{
+            passwordTextFieldRegister.layer.borderWidth = 0
+        }
+        
+        if nomeTextFieldRegister.text?.isEmpty == true{
+            nomeTextFieldRegister.layer.borderColor = UIColor.red.cgColor
+            nomeTextFieldRegister.layer.borderWidth = 2
+            }
+        else{
+            nomeTextFieldRegister.layer.borderWidth = 0        }
+       }
 
     
     override init(frame: CGRect) {
@@ -154,6 +177,7 @@ class RegisterScreen: UIView {
         backgroundColor = .systemGray5
         addelement()
         setupConstraints()
+        setupDismissKeyboardGesture()
         
     }
     
