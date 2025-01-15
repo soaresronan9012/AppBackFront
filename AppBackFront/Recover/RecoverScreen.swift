@@ -29,6 +29,17 @@ class RecoverScreen: UIView {
         lb.numberOfLines = 0   // numbers of lines
         return lb
     }()
+    
+    lazy var imageRecover: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "user-check-alt-svgrepo-com")?.withRenderingMode(.alwaysTemplate)
+        //Transforma a imagem em um template para que a tintColor seja aplicada corretamente. Este modo faz com que todos os pixels não transparentes da imagem usem a cor definida pela tintColor.
+
+        imageView.tintColor = .white // passa para a cor branca
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
 
     
     
@@ -46,6 +57,7 @@ class RecoverScreen: UIView {
     private func addElements() {
         addSubview(backgroundimage)
         addSubview(labelRecover)
+        addSubview(imageRecover)
     }
     
     private func constraints() {
@@ -59,6 +71,11 @@ class RecoverScreen: UIView {
             labelRecover.centerXAnchor.constraint(equalTo: centerXAnchor),
             labelRecover.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 20),
             labelRecover.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -20),
+            
+            imageRecover.topAnchor.constraint(equalTo: labelRecover.bottomAnchor, constant: 60),
+            imageRecover.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageRecover.widthAnchor.constraint(equalToConstant: 80),
+            imageRecover.heightAnchor.constraint(equalToConstant: 80),
             
             ])
     }
