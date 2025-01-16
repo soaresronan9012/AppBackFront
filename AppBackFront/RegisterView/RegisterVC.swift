@@ -24,11 +24,11 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     
     
     //metodos delegate de textfield
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {  // ao finalizar
         screen?.validateTextFields()
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) { // quando começa a editar
         screen?.nomeTextFieldRegister.layer.borderWidth = 0
         screen?.passwordLabelRegister.layer.borderWidth = 0
     }

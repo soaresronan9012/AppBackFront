@@ -155,20 +155,21 @@ class RegisterScreen: UIView {
     @objc private func dismissKeyboard() {
         self.endEditing(true) // Fecha o teclado
         
-        if passwordTextFieldRegister.text?.isEmpty == true {
+        if passwordTextFieldRegister.text?.isEmpty == true {  // se esse campo estiver vazio
             passwordTextFieldRegister.layer.borderColor = UIColor.red.cgColor
             passwordTextFieldRegister.layer.borderWidth = 2
             }
         else{
-            passwordTextFieldRegister.layer.borderWidth = 0
+            passwordTextFieldRegister.layer.borderWidth = 0  // se preenchido
         }
         
-        if nomeTextFieldRegister.text?.isEmpty == true{
+        if nomeTextFieldRegister.text?.isEmpty == true{  // se esse campo estiver vazio
             nomeTextFieldRegister.layer.borderColor = UIColor.red.cgColor
             nomeTextFieldRegister.layer.borderWidth = 2
             }
         else{
-            nomeTextFieldRegister.layer.borderWidth = 0        }
+            nomeTextFieldRegister.layer.borderWidth = 0  // se preenchido
+        }
        }
 
     
