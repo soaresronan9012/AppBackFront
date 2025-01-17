@@ -76,17 +76,18 @@ class RegisterScreen: UIView {
         let emailLogin = UITextField()
         //emailLogin.placeholder = " password"
         emailLogin.textColor = .black
-        emailLogin.keyboardType = .default
         emailLogin.font = UIFont.systemFont(ofSize: 16)
         emailLogin.translatesAutoresizingMaskIntoConstraints = false
         emailLogin.backgroundColor = .systemGray2
-        //emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
+        emailLogin.autocorrectionType = .no  // desabilita autocorrecao de texto
         //emailLogin.borderStyle = .roundedRect // bordas arredondadas
         emailLogin.layer.cornerRadius = 12 // borda arredondada
         emailLogin.layer.borderWidth = 1.0// largura borda
         emailLogin.layer.borderColor = UIColor.white.cgColor // cor da borda
-        emailLogin.keyboardType = .default // tipo de teclado
+        emailLogin.keyboardType = .emailAddress // tipo de teclado
         emailLogin.isSecureTextEntry = true
+        emailLogin.textContentType = .oneTimeCode
+        //Sugestões automáticas reduzem a probabilidade de erros de digitação, especialmente para campos sensíveis, como emails e códigos de verificação.
         return emailLogin
     }()
     

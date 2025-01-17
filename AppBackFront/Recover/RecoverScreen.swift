@@ -40,12 +40,34 @@ class RecoverScreen: UIView {
         return imageView
     }()
     
-    lazy var lineView: UIView = {
+//    lazy var lineView: UIView = {
+//        let lineView = UIView()
+//        lineView.translatesAutoresizingMaskIntoConstraints = false
+//        lineView.backgroundColor = .white
+//        return lineView
+//    }()
+    
+    
+    lazy var recoverTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.attributedPlaceholder = NSAttributedString(
+                string: "enter your email",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+            )
+        textField.borderStyle = .none
+        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.textColor = .white
+        return textField
+    }()
+    
+    lazy var lineRecoverTextField: UIView = {
         let lineView = UIView()
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.backgroundColor = .white
         return lineView
     }()
+    
 
     
     
@@ -64,7 +86,9 @@ class RecoverScreen: UIView {
         addSubview(backgroundimage)
         addSubview(labelRecover)
         addSubview(imageRecover)
-        addSubview(lineView)
+//        addSubview(lineView)
+        addSubview(recoverTextField)
+        addSubview(lineRecoverTextField)
     }
     
     private func constraints() {
@@ -84,11 +108,20 @@ class RecoverScreen: UIView {
             imageRecover.widthAnchor.constraint(equalToConstant: 80),
             imageRecover.heightAnchor.constraint(equalToConstant: 80),
             
-            lineView.topAnchor.constraint(equalTo: imageRecover.bottomAnchor, constant: 30),
-            lineView.widthAnchor.constraint(equalToConstant: 250),
-            lineView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 2),
+//           lineView.topAnchor.constraint(equalTo: imageRecover.bottomAnchor, constant: 30),
+//            lineView.widthAnchor.constraint(equalToConstant: 250),
+//            lineView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            lineView.heightAnchor.constraint(equalToConstant: 1),
             
+            recoverTextField.topAnchor.constraint(equalTo: imageRecover.bottomAnchor, constant: 80),
+            recoverTextField.leadingAnchor.constraint(equalTo: labelRecover.leadingAnchor),
+            recoverTextField.trailingAnchor.constraint(equalTo: labelRecover.trailingAnchor),
+            
+            lineRecoverTextField.topAnchor.constraint(equalTo: recoverTextField.bottomAnchor, constant: 1),
+            lineRecoverTextField.widthAnchor.constraint(equalToConstant: 320),
+            lineRecoverTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            lineRecoverTextField.heightAnchor.constraint(equalToConstant: 1),
+    
             ])
     }
     
