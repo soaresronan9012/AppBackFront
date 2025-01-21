@@ -69,12 +69,44 @@ class RecoverScreen: UIView {
     }()
     
 
+    public func configDelegateTextField(delegate: UITextFieldDelegate){ // funcao de campos a serem validados
+        recoverTextField.delegate = delegate
+    }
+    
+    
+    public func validaTextField(){  // funcao de validacoes de campo
+        let email: String = recoverTextField.text ?? ""
+        
+        if !email.isEmpty {
+            recoverTextField.layer.borderWidth = 0
+        }
+        else {
+            recoverTextField.layer.borderWidth = 2
+            recoverTextField.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    private func setupDismissKeyboard(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc private func dismissKeyboard(){
+        if recoverTextField.text?.isEmpty == true {
+            recoverTextField.layer.borderWidth = 2
+            recoverTextField.layer.borderColor = UIColor.red.cgColor        }
+        else {
+            recoverTextField.layer.borderWidth = 0
+        }
+    }
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
         constraints()
+        setupDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
