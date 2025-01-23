@@ -68,6 +68,19 @@ class RecoverScreen: UIView {
         return lineView
     }()
     
+    lazy var buttonRecoverButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.isEnabled = false
+        button.setTitle("recover", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)// tamanho da fonte e peso da fonte
+        button.setTitleColor(.systemGray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.1) // cor com transparencia
+        button.layer.cornerRadius = 10 // angulo das bordas
+        button.clipsToBounds = true // habilita bordas arredondadas
+        button.isEnabled = false
+        return button
+    }()
 
     public func configDelegateTextField(delegate: UITextFieldDelegate){ // funcao de campos a serem validados
         recoverTextField.delegate = delegate
@@ -79,10 +92,14 @@ class RecoverScreen: UIView {
         
         if !email.isEmpty {
             recoverTextField.layer.borderWidth = 0
+            buttonRecoverButton.isEnabled = false
+            buttonRecoverButton.setTitleColor(.white, for: .normal)
         }
         else {
             recoverTextField.layer.borderWidth = 2
             recoverTextField.layer.borderColor = UIColor.red.cgColor
+            buttonRecoverButton.isEnabled = true
+            buttonRecoverButton.setTitleColor(.systemGray, for: .normal)
         }
     }
     
@@ -121,6 +138,7 @@ class RecoverScreen: UIView {
 //        addSubview(lineView)
         addSubview(recoverTextField)
         addSubview(lineRecoverTextField)
+        addSubview(buttonRecoverButton)
     }
     
     private func constraints() {
@@ -153,6 +171,12 @@ class RecoverScreen: UIView {
             lineRecoverTextField.widthAnchor.constraint(equalToConstant: 320),
             lineRecoverTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             lineRecoverTextField.heightAnchor.constraint(equalToConstant: 1),
+            
+            buttonRecoverButton.topAnchor.constraint(equalTo: lineRecoverTextField.bottomAnchor, constant: 30),
+            buttonRecoverButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            buttonRecoverButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            buttonRecoverButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            buttonRecoverButton.heightAnchor.constraint(equalToConstant: 50),
     
             ])
     }
