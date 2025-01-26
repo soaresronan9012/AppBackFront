@@ -112,9 +112,14 @@ class RecoverScreen: UIView {
     @objc private func dismissKeyboard(){
         if recoverTextField.text?.isEmpty == true {
             recoverTextField.layer.borderWidth = 2
-            recoverTextField.layer.borderColor = UIColor.red.cgColor        }
+            recoverTextField.layer.borderColor = UIColor.red.cgColor
+            buttonRecoverButton.isEnabled = true
+            buttonRecoverButton.setTitleColor(.systemGray, for: .normal)
+        }
         else {
             recoverTextField.layer.borderWidth = 0
+            buttonRecoverButton.isEnabled = false
+            buttonRecoverButton.setTitleColor(.white, for: .normal)
         }
     }
     
