@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol buttonSend: AnyObject {
+    func sendReturn()
+}
+    
 class RegisterScreen: UIView {
+    
+    private weak var delegate : buttonSend?  // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
+    
     
     lazy var subImageView: UIImageView = { // imagem de fundo da view
         let image = UIImageView()
@@ -107,8 +114,9 @@ class RegisterScreen: UIView {
     }()
     @objc func tappetButtonCadastroButton( _ sender: UIButton){ // método invocado pela acao do botao
         print("clicou")
+        delegate?.sendReturn()
         
-    }
+           }
     
     
     public func configDelegateTextFieldDelegate(delegate: UITextFieldDelegate){

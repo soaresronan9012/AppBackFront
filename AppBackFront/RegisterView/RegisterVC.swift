@@ -7,7 +7,13 @@
 
 import UIKit
 
-class RegisterVC: UIViewController, UITextFieldDelegate {
+class RegisterVC: UIViewController, UITextFieldDelegate, buttonSend {
+    
+    func sendReturn() {
+        let recover = RecoverVC()
+        recover.modalPresentationStyle = .formSheet
+        present(recover, animated: true)    }
+    
 
     var screen : RegisterScreen?
     
