@@ -13,7 +13,7 @@ protocol buttonSend: AnyObject {
     
 class RegisterScreen: UIView {
     
-    private weak var delegate : buttonSend?  // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
+     weak var delegate : buttonSend?  // delegate  será qualquer classe que implementar o protocolo / propriedade do tipo delegate optional
     
     
     lazy var subImageView: UIImageView = { // imagem de fundo da view

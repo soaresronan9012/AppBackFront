@@ -10,9 +10,11 @@ import UIKit
 class RegisterVC: UIViewController, UITextFieldDelegate, buttonSend {
     
     func sendReturn() {
-        let recover = RecoverVC()
-        recover.modalPresentationStyle = .formSheet
-        present(recover, animated: true)    }
+        //let recover = SecondViewController()
+        //recover.modalPresentationStyle = .formSheet
+       // present(recover, animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
 
     var screen : RegisterScreen?
@@ -21,6 +23,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate, buttonSend {
         screen = RegisterScreen()
         view = screen
         screen?.configDelegateTextFieldDelegate(delegate: self)
+        screen?.delegate = self
     }
     
     override func viewDidLoad() {
