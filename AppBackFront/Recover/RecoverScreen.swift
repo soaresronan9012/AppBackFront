@@ -73,7 +73,7 @@ class RecoverScreen: UIView {
         button.isEnabled = false
         button.setTitle("recover", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)// tamanho da fonte e peso da fonte
-        button.setTitleColor(.systemGray, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.1) // cor com transparencia
         button.layer.cornerRadius = 10 // angulo das bordas
@@ -99,7 +99,7 @@ class RecoverScreen: UIView {
             recoverTextField.layer.borderWidth = 2
             recoverTextField.layer.borderColor = UIColor.red.cgColor
             buttonRecoverButton.isEnabled = true
-            buttonRecoverButton.setTitleColor(.systemGray, for: .normal)
+            buttonRecoverButton.setTitleColor(.black, for: .normal)
         }
     }
     
@@ -114,7 +114,7 @@ class RecoverScreen: UIView {
             recoverTextField.layer.borderWidth = 2
             recoverTextField.layer.borderColor = UIColor.red.cgColor
             buttonRecoverButton.isEnabled = true
-            buttonRecoverButton.setTitleColor(.systemGray, for: .normal)
+            buttonRecoverButton.setTitleColor(.black, for: .normal)
         }
         else {
             recoverTextField.layer.borderWidth = 0
