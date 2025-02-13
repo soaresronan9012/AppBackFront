@@ -77,7 +77,7 @@ class OptionalScreenView: UIView {
         line.translatesAutoresizingMaskIntoConstraints = false
         line.text = "Register now"
         line.textAlignment = .center
-        line.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        line.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         line.textColor = .white
         line.translatesAutoresizingMaskIntoConstraints = false
         line.isUserInteractionEnabled = true // habilita interacao de click / touch
